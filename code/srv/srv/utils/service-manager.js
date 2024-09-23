@@ -171,8 +171,8 @@ class ServiceManager {
             Logger.log(`Service Broker ${name} successfully created`);
             return response.data;
         } catch (error) {
-            Logger.error("Error: Service Broker can not be created");
-            Logger.error(`Error: ${error.message}`)
+            Logger.error("Error: Service Broker can not be created AAAAA");
+            Logger.error(`Error: ${error.message} ${this.creds.sm_url} ${JSON.stringify(body)}`)
             throw error;
         }
     }

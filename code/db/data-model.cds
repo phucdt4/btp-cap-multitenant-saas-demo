@@ -158,6 +158,8 @@ context susaas.db {
 
       }
 
+      
+
       entity RecyclingMaterials {
             key product      : Association to Products;
             key material     : String;

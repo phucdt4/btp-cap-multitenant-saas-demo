@@ -21,7 +21,7 @@ service PublicService @(path : '/catalog/PublicService', impl: 'srv/public-servi
         title                       : '{i18n>product}',
         UI.ParameterDefaultValue    : _it.product_ID,
       )
-      @readonly @mandatory
+      @mandatory
       productId : String not null,
       @( 
         title                       : '{i18n>traditionalProductSales} ({i18n>inPercentage})',
@@ -51,7 +51,7 @@ service PublicService @(path : '/catalog/PublicService', impl: 'srv/public-servi
         title                       : '{i18n>product}',
         UI.ParameterDefaultValue    : _it.product_ID
       )
-      @mandatory @readonly
+      @mandatory
       productId : String not null,
     ) returns String;
 
@@ -66,7 +66,7 @@ service PublicService @(path : '/catalog/PublicService', impl: 'srv/public-servi
         title                       : '{i18n>product}',
         UI.ParameterDefaultValue    : _it.product_ID
       )
-      @mandatory @readonly
+      @mandatory
       productId : String not null,
     ) returns String;
 
@@ -81,7 +81,7 @@ service PublicService @(path : '/catalog/PublicService', impl: 'srv/public-servi
         title                       : '{i18n>product}',
         UI.ParameterDefaultValue    : _it.product_ID
       )
-      @mandatory @readonly
+      @mandatory
       productId : String not null,
     ) returns String;
   }

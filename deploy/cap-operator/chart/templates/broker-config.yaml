@@ -7,7 +7,7 @@ metadata:
   name: {{ template "capApplicationVersionName" . }}-brk-config
 data:
   config.json: |
-    {   
+    {
       "{{.Values.app.name}}-api": {
         "extend_credentials": {
           "shared": {
@@ -20,11 +20,13 @@ data:
               "authorities": [
                 "$XSMASTERAPPNAME.plan_default"
               ]
-            },"premium": {
+            },
+            "premium": {
               "authorities": [
                 "$XSMASTERAPPNAME.plan_premium"
               ]
-            },"trial": {
+            },
+            "trial": {
               "authorities": [
                 "$XSMASTERAPPNAME.plan_trial"
               ]

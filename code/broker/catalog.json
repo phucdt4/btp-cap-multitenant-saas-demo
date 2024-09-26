@@ -8,20 +8,20 @@
         {
           "name": "trial",
           "description": "Trial Plan",
-          "id": "6a5374b3-a02b-4a26-bed5-fec751d27225"
+          "id": "6e2ad9c3-adda-4d4a-a1fd-5a2e4ea9d4da"
         },
         {
           "name": "default",
           "description": "Standard Plan",
-          "id": "52092b12-f3ec-4907-a38d-f2555708fb8e"
+          "id": "c7763388-f1c0-4acb-bfe5-74e1bf5f87b3"
         },
         {
           "name": "premium",
           "description": "Premium Plan",
-          "id": "f4f78a86-d31a-48a1-8e3d-9a4fa148e893"
+          "id": "401e7106-7723-4970-aedf-1e9f08eb6de3"
         }
       ],
-      "id": "dbda1cc7-f59e-4ef3-a75d-1ea39d286ebb"
+      "id": "4ab3347a-1df1-4961-9cef-ec8fe2f1ccc6"
     }
   ]
 }

@@ -57,6 +57,7 @@ export class TenantAutomator {
             return this.cisCentral;
         } catch (error) {
             Logger.error("Error: CIS Central Instance can not be created!")
+            Logger.error("Error: CIS Central Instance " + error.message)
             throw error;
         }
     }
@@ -224,16 +225,19 @@ class CloudFoundry extends TenantAutomator {
     }
 
     async initialize(){
+        let btpAdmin;
         try{
             await super.initialize();
             await this.readCredentials();
 
-            let btpAdmin = this.credentials.get("btp-admin-user")
+            btpAdmin = this.credentials.get("btp-admin-user")
             await this.cfUtils.login(btpAdmin.username, btpAdmin.value);
 
             Logger.log("Cloud Foundry login successful!")
         } catch (error) {
             Logger.error("Error: Cloud Foundry login not successful");
+            Logger.error(`Error: Can not login to CF with user ${btpAdmin.username} ${btpAdmin.value}`);
+            Logger.error(error.message);
             throw error;
         }
     }
@@ -284,6 +288,7 @@ class CloudFoundry extends TenantAutomator {
         try {
             const credStore = new CredStore();
             let btpAdminUser = await credStore.readCredential("susaas", "password", "btp-admin-user")
+            Logger.info("HVN....BEP Admin USer: " + btpAdminUser);
             let serviceBroker = await credStore.readCredential("susaas", "password", "susaas-broker-credentials")
 
             this.credentials.set(btpAdminUser.name, btpAdminUser)

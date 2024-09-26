@@ -42,6 +42,7 @@ class CredStore {
         );
         const decrypt = await JWE.createDecrypt(key).decrypt(payload);
         const result = decrypt.plaintext.toString();
+        Logger.info("HVN....Current Payload Credential: " + JSON.stringify(result));
         return result;
     }
 
@@ -51,6 +52,7 @@ class CredStore {
             .then(response => response.text())
             .then(payload => this.#decryptPayload(privateKey, payload))
             .then(JSON.parse);
+        Logger.info("HVN....Get Output from Credential services: " + JSON.stringify(result));
         return result;
     }
 
@@ -60,6 +62,7 @@ class CredStore {
             .then(response => response.text())
             .then(payload => this.#decryptPayload(privateKey, payload))
             .then(JSON.parse);
+        Logger.info("HVN....Get Output from Credential services: " + JSON.stringify(result));
         return result.value;
     }
 

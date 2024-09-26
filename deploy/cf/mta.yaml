@@ -241,7 +241,7 @@ modules:
     properties:
       SBF_ENABLE_AUDITLOG: false
       SBF_CATALOG_FILE: ./catalog.json
-      SBF_CATALOG_SUFFIX: ${space}-${org}
+      SBF_CATALOG_SUFFIX: ${space}-hack2build
       SBF_SERVICE_CONFIG: 
           susaas-api:
             extend_credentials:
@@ -306,7 +306,7 @@ resources:
       service-name: ${space}-susaas-uaa
       service-plan: application
       path: ./config/xs-security.json
-      xsuaa-app: susaas-${space}-${org}
+      xsuaa-app: susaas-${space}-hack2build
       config:
         xsappname: ${xsuaa-app}
         role-collections:
@@ -495,7 +495,7 @@ resources:
       service: xsuaa
       service-name: ${space}-susaas-api-uaa
       service-plan: broker
-      xsuaa-app: susaas-api-${space}-${org}
+      xsuaa-app: susaas-api-${space}-hack2build
       config:
         xsappname: ${xsuaa-app}
     properties:
@@ -513,7 +513,7 @@ resources:
       service-name: ${space}-susaas-ias-app
       service-plan: application
       config:
-        display-name: Susaas-${space}-${org}
+        display-name: Susaas-${space}-hack2build
         oauth2-configuration:
           redirect-uris:
             - https://*.~{susaas-router-api/app-domain}/login/callback?authType=ias

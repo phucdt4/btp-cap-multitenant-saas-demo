@@ -1,0 +1,20 @@
+ID: susaas.freetier
+_schema-version: 3.2.0
+version: 1.0.0
+extends: susaas
+
+modules:
+  - name: susaas-api-sb
+    properties:
+      SBF_BROKER_CREDENTIALS_HASH:  >
+        {
+          "broker-user": "sha256:338RG4kRIeF7YdYeGg+qJdlPgbULp+x//WW1JDQhAdM=:dcP9TYJRvYt9CPNOSfnto1InT30NQHcFBlF3YqTA1tI="
+        }
+
+resources:
+  - name: susaas-ias-app
+    active: true
+  - name: susaas-alert-notification
+    parameters: 
+      service-plan: free
+      path: ./config/alert-notif-private.json

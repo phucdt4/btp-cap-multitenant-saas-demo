@@ -1,0 +1,55 @@
+@xsuaaUrl = https://training-ai-0nabpvkx.authentication.ap10.hana.ondemand.com
+@xsuaaClientId = sb-susaas-dev-training123_training-ai-0nabpvkx!t53396
+@xsuaaClientSecret = 5J5G5+7KDQCQRJB5Zffv1NjtmAs=
+@srvUrl = https://training123-training-ai-0nabpvkx-dev-susaas-srv.cfapps.ap10.hana.ondemand.com
+
+@tenantId = ae83a949-6f76-461d-bdf7-182524025149
+
+
+##########################################
+# Get SAP XSUAA token 
+##########################################
+
+# @name getXsuaaToken
+
+POST {{xsuaaUrl}}/oauth/token
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic {{xsuaaClientId}}:{{xsuaaClientSecret}}
+
+?client_id={{xsuaaClientId}}
+&client_secret={{xsuaaClientSecret}}
+&grant_type=client_credentials
+
+
+################################################
+# Call CAP endpoint (BTP) For DB Model Upgrade
+################################################
+
+@access_token = {{getXsuaaToken.response.body.$.access_token}}
+
+# @name upgradeTenantDBModel
+POST {{srvUrl}}/-/cds/deployment/upgrade
+Authorization: Bearer {{access_token}}
+Content-type: application/json
+
+{ "tenant": "{{tenantId}}"  }
+
+##########################################
+
+# @name upgradeMultipleTenants
+POST {{srvUrl}}/-/cds/saas-provisioning/upgrade
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+#Prefer: respond-async
+
+{
+  "tenants": ["*"]
+}
+
+##########################################
+
+# @name getTaskState
+GET {{srvUrl}}/-/cds/jobs/pollTask(ID='b8df151e-d84a-409d-8bf9-0d54a88ead03')
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
